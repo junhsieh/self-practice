@@ -1,0 +1,63 @@
+<html>
+<head>
+  <script src="/javascript/jquery/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+
+  <canvas id="canvas" width="450" height="450"></canvas>
+
+<script>
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+ 
+canvas.width = 800;
+canvas.height = 600;
+ 
+var pacmanTiles = {
+  loaded: false,
+  image: new Image(),
+  tileWidth: 64,
+  tileHeight: 64
+};
+ 
+pacmanTiles.image.onload = function() {
+  pacmanTiles.loaded = true;
+}
+ 
+pacmanTiles.image.src = 'pacman.png';
+ 
+var mySprite = {
+  x: 200,
+  y: 200,
+  width: 64,
+  height: 64,
+  speed: 200,
+  state: 0
+};
+ 
+function render() {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+  if (pacmanTiles.loaded) {
+    ctx.drawImage(
+      pacmanTiles.image,
+      mySprite.state * pacmanTiles.tileWidth,
+      0, 
+      mySprite.width,
+      mySprite.height,
+      mySprite.x,
+      mySprite.y,
+      mySprite.width,
+      mySprite.height
+    );
+  }
+}
+
+$(document).ready(function() {
+  setTimeout(render, 3000);
+});
+</script>
+
+</body>
+</html>
