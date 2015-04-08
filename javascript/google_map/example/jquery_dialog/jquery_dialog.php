@@ -12,6 +12,7 @@
       markerArr: [],
       markerClusterer: null,
       markerClusterOptions: {gridSize: 50, maxZoom: 8},
+      infoWindow: null,
     };
 
     // Initializing Google Map
@@ -23,8 +24,8 @@
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         });
         myMap.mapCenter = optObj.mapCenter;
+        myMap.infoWindow = new google.maps.InfoWindow();
       }
-
     }
 
     // Add a marker to the map and push to the array.
@@ -32,7 +33,23 @@
       var marker = new google.maps.Marker({
         map: myMap.map,
         position: new google.maps.LatLng(optObj.lat, optObj.lng),
-        icon: optObj.icon,
+        icon: myMap.getIcon(optObj.salesDiff),
+        dealerName: optObj.dealerName,
+        salesDiff: optObj.salesDiff,
+        lastInvoiceDate: optObj.lastInvoiceDate,
+      });
+
+      // mouseover
+      google.maps.event.addListener(marker, 'mouseover', myMap.setInfoWindowContent_v2(myMap.infoWindow));
+
+      // mouseout
+      //google.maps.event.addListener(marker, 'mouseout', function(){
+      //  myMap.infoWindow.close();
+      //});
+
+      // click
+      google.maps.event.addListener(marker, 'click', function(){
+        console.log($(this).attr('dealerName'));
       });
 
       myMap.markerArr.push(marker);
@@ -46,7 +63,9 @@
         myMap.addMarker({
           lat: dataArr[i].lat,
           lng: dataArr[i].lng,
-          icon: myMap.getIcon(dataArr[i].salesDiff),
+          dealerName: dataArr[i].dealerName,
+          salesDiff: dataArr[i].salesDiff,
+          lastInvoiceDate: dataArr[i].lastInvoiceDate,
         });
       }
 
@@ -81,6 +100,22 @@
 
       myMap.clearAllMarkers();
       myMap.markerArr = [];
+    }
+
+    myMap.setInfoWindowContent_v2 = function(infowindow) {
+      return function() {
+        var color = myMap.diffColor(this.salesDiff);
+
+        myMap.infoWindow.setContent(''
+          + '<b>' + this.dealerName + '</b>'
+          + '<br>'
+          + '<span style="color: ' + myMap.diffColor(this.salesDiff) + ';">'
+            + '<b>Last 1M vs Last 2M Diff: ' + this.salesDiff + '</b>'
+          + '</span>'
+          + '<br>Last Invoice: ' + this.lastInvoiceDate
+        );
+        myMap.infoWindow.open(this.map, this);
+      }
     }
 
     myMap.getIcon = function(num) {
