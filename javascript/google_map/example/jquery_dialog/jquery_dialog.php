@@ -34,7 +34,7 @@
       $('#showMapBtn').on('click', function(e){
         e.preventDefault();
 
-        $.getJSON('/javascript/google_map/jquery_dialog/jquery_dialog_data.php', [], function(response) {
+        $.getJSON('/javascript/google_map/example/jquery_dialog/jquery_dialog_data.php', [], function(response) {
           myMap.setAllMarkers(response);
 
           $('#myDialogDiv').dialog('open');

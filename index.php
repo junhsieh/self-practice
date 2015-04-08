@@ -1,1 +1,1 @@
-<a href="/javascript/google_map/jquery_dialog/jquery_dialog.php">Google Map</a>
+<a href="/javascript/google_map/index.php">Google Map</a>
