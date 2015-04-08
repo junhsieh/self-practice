@@ -85,22 +85,27 @@
 
     myMap.getIcon = function(num) {
       var iconURL = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=';
-      var iconRed = iconURL + 'D|FF0000|000000';
-      var iconOrange = iconURL + 'D|FF9933|000000';
-      var iconBlack = iconURL + 'D|000000|000000';
-      var iconGreen = iconURL + 'U|33CC00|000000';
+      var iconTxt = 'D';
 
       if (num > 0) {
-        return iconGreen;
+        iconTxt = 'U';
+      }
+
+      return iconURL + iconTxt + '|' + myMap.diffColor(num) + '|000000';
+    }
+
+    myMap.diffColor = function(num) {
+      if (num > 0) {
+        return '33CC00'; // green
       }
       else if (num == 0) {
-        return iconBlack;
+        return '000000'; // black
       }
       else if (num >= -20) {
-        return iconOrange;
+        return 'FF9933'; // orange
       }
       else {
-        return iconRed;
+        return 'FF0000'; // red
       }
     }
 
