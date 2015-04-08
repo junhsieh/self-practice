@@ -10,6 +10,7 @@ $arr[] = array('lat' => 37.4619, 'lng' => -122.1419, 'idDealer' =>  6, 'dealerNa
 $arr[] = array('lat' => 37.4719, 'lng' => -122.1419, 'idDealer' =>  7, 'dealerName' => 'test 7', 'salesDiff' => 100);
 $arr[] = array('lat' => 37.4819, 'lng' => -122.1419, 'idDealer' =>  8, 'dealerName' => 'test 8', 'salesDiff' => 100);
 $arr[] = array('lat' => 37.4119, 'lng' => -122.1319, 'idDealer' =>  9, 'dealerName' => 'test 9', 'salesDiff' => 100);
+
 echo json_encode($arr);
 exit;
 ?>

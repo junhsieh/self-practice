@@ -8,8 +8,10 @@
   <script>
     var myMap = {
       map: null,
-      markerArr: [],
       mapCenter: null,
+      markerArr: [],
+      markerClusterer: null,
+      markerClusterOptions: {gridSize: 50, maxZoom: 8},
     };
 
     // Initializing Google Map
@@ -22,6 +24,7 @@
         });
         myMap.mapCenter = optObj.mapCenter;
       }
+
     }
 
     // Add a marker to the map and push to the array.
@@ -41,6 +44,8 @@
       for (var i = 0; i < dataArr.length; i++) {
         myMap.addMarker({lat: dataArr[i].lat, lng: dataArr[i].lng});
       }
+
+      myMap.markerCluster = new MarkerClusterer(myMap.map, myMap.markerArr, myMap.markerClusterOptions);
     }
 
     // Removes the markers from the map, but keeps them in the array.
@@ -64,6 +69,11 @@
 
     // Deletes all markers in the array by removing references to them.
     myMap.deleteAllMarkers = function() {
+      if (myMap.markerCluster) {
+        myMap.markerCluster.clearMarkers();
+        myMap.markerCluster = null;
+      }
+
       myMap.clearAllMarkers();
       myMap.markerArr = [];
     }
