@@ -32,6 +32,7 @@
       var marker = new google.maps.Marker({
         map: myMap.map,
         position: new google.maps.LatLng(optObj.lat, optObj.lng),
+        icon: optObj.icon,
       });
 
       myMap.markerArr.push(marker);
@@ -42,7 +43,11 @@
       myMap.deleteAllMarkers();
 
       for (var i = 0; i < dataArr.length; i++) {
-        myMap.addMarker({lat: dataArr[i].lat, lng: dataArr[i].lng});
+        myMap.addMarker({
+          lat: dataArr[i].lat,
+          lng: dataArr[i].lng,
+          icon: myMap.getIcon(dataArr[i].salesDiff),
+        });
       }
 
       myMap.markerCluster = new MarkerClusterer(myMap.map, myMap.markerArr, myMap.markerClusterOptions);
@@ -76,6 +81,27 @@
 
       myMap.clearAllMarkers();
       myMap.markerArr = [];
+    }
+
+    myMap.getIcon = function(num) {
+      var iconURL = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=';
+      var iconRed = iconURL + 'D|FF0000|000000';
+      var iconOrange = iconURL + 'D|FF9933|000000';
+      var iconBlack = iconURL + 'D|000000|000000';
+      var iconGreen = iconURL + 'U|33CC00|000000';
+
+      if (num > 0) {
+        return iconGreen;
+      }
+      else if (num == 0) {
+        return iconBlack;
+      }
+      else if (num >= -20) {
+        return iconOrange;
+      }
+      else {
+        return iconRed;
+      }
     }
 
     $(document).ready(function(){
