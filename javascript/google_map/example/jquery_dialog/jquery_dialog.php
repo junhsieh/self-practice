@@ -223,8 +223,16 @@
   </script>
 </head>
 <body>
-  A marker clustering library for the Google Maps JavaScript API v3:
+  <p>This example shows Google Maps JavaScript API inside of jQuery Dialog Window. If the map was not showing up incompletely, there are two important considerations here:</p>
+  <ul>
+    <li>1. Ensure that all the javascript/jQuery is included on the parent page. Don't try to deliver the js via AJAX.</li>
+    <li>2. Ensure that the map is initialized only when the canvas is visible. Initializing an invisible canvas is only ever partially successful.</li>
+  </ul>
+  <p>A marker clustering library for the Google Maps JavaScript API v3:</p>
   <a href="https://github.com/googlemaps/js-marker-clusterer">https://github.com/googlemaps/js-marker-clusterer</a>
+
+  <p><b>Reference:</b></p>
+  <a href="http://stackoverflow.com/questions/16547779/google-maps-javascript-api-inside-of-jquery-dialog-window">http://stackoverflow.com/questions/16547779/google-maps-javascript-api-inside-of-jquery-dialog-window</a>
 
 
   <div id="panel" style="margin-top: 30px;">
