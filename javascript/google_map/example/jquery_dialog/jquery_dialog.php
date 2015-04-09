@@ -2,7 +2,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.css" />
   <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <script src="/javascript/google_map/markerclusterer_compiled.js"></script>
+  <script src="/javascript/google_map/markerclusterer.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.js"></script>
   <script>
@@ -10,8 +10,13 @@
       map: null,
       mapCenter: null,
       markerArr: [],
-      markerClusterer: null,
-      markerClusterOptions: {gridSize: 50, maxZoom: 8},
+      markerCluster: null,
+      markerClusterOptions: {
+        gridSize: 50,
+        maxZoom: 21, // to make sure the marker will not show up.
+        minimumClusterSize: 1, // to make sure the marker will not show up.
+        styles: [],
+      },
       infoWindow: null,
     };
 
@@ -25,7 +30,61 @@
         });
         myMap.mapCenter = optObj.mapCenter;
         myMap.infoWindow = new google.maps.InfoWindow();
+
+        // zoom changed listener.
+        google.maps.event.addListener(myMap.map, 'zoom_changed', function() {
+          var zoomLevel = myMap.map.getZoom();
+          console.log(zoomLevel);
+        });
+
+        // Setting Cluster Style.
+        // The number of styles to add depends on how many the icon (index) would have in the myMap.markerClusterCalculator().
+        var imgSize = [53, 56, 66, 78, 90];
+
+        for (var i = 0; i < imgSize.length; i++) {
+          myMap.markerClusterOptions.styles.push({
+            url: '/javascript/google_map/images/m' + i + '.png',
+            height: imgSize[i],
+            width: imgSize[i],
+            //anchor: [26, 0],
+            textColor: '#ffffff',
+            //textSize: 12,
+          });
+        }
       }
+    };
+
+    // A custom calculator for Marker Cluster.
+    // It will show the sales difference instead of markers count.
+    myMap.markerClusterCalculator = function(markers, numStyles) {
+      var index = 0;
+      var count = 0;
+
+      for (var i = 0; i < markers.length; i++) {
+        count += markers[i].salesDiff;
+      }
+count+=10;
+
+      if (count > 0) {
+        index = 0;
+      }
+      else if (count > -10) {
+        index = 1;
+      }
+      else if (count > -20) {
+        index = 2;
+      }
+      else if (count > -30) {
+        index = 3;
+      }
+      else if (count > -40) {
+        index = 4;
+      }
+
+      return {
+        text: count,
+        index: index
+      };
     };
 
     // Add a marker to the map and push to the array.
@@ -86,6 +145,8 @@
       }
 
       myMap.markerCluster = new MarkerClusterer(myMap.map, myMap.markerArr, myMap.markerClusterOptions);
+
+      myMap.markerCluster.setCalculator(myMap.markerClusterCalculator);
     };
 
     // Removes the markers from the map, but keeps them in the array.
@@ -154,6 +215,7 @@
       };
     };
 
+    // icon
     myMap.getIcon = function(num) {
       var iconURL = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=';
       var iconTxt = 'D';
@@ -228,8 +290,16 @@
     <li>1. Ensure that all the javascript/jQuery is included on the parent page. Don't try to deliver the js via AJAX.</li>
     <li>2. Ensure that the map is initialized only when the canvas is visible. Initializing an invisible canvas is only ever partially successful.</li>
   </ul>
+
   <p>A marker clustering library for the Google Maps JavaScript API v3:</p>
   <a href="https://github.com/googlemaps/js-marker-clusterer">https://github.com/googlemaps/js-marker-clusterer</a>
+
+  <p>Some functions in markerclusterer.jsyou may be interested in:</p>
+  <ul>
+    <li>Cluster.prototype.updateIcon</li>
+    <li>MarkerClusterer.prototype.calculator_</li>
+    <li>MarkerClusterer.prototype.setupStyles_</li>
+  </ul>
 
   <p><b>Reference:</b></p>
   <a href="http://stackoverflow.com/questions/16547779/google-maps-javascript-api-inside-of-jquery-dialog-window">http://stackoverflow.com/questions/16547779/google-maps-javascript-api-inside-of-jquery-dialog-window</a>
