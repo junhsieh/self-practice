@@ -2,7 +2,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.css" />
   <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <script src="/javascript/google_map/markerclusterer.js"></script>
+  <script src="/javascript/google_map/markerclusterer_compiled.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.js"></script>
   <script>
