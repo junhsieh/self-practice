@@ -26,7 +26,7 @@
         myMap.mapCenter = optObj.mapCenter;
         myMap.infoWindow = new google.maps.InfoWindow();
       }
-    }
+    };
 
     // Add a marker to the map and push to the array.
     myMap.addMarker = function(optObj) {
@@ -53,7 +53,23 @@
       });
 
       myMap.markerArr.push(marker);
-    }
+
+      // marker list div.
+      var item = document.createElement('DIV');
+      var title = document.createElement('A');
+      title.href = '#';
+      title.className = 'title';
+      title.innerHTML = optObj.dealerName;
+
+      item.appendChild(title);
+      $('#markerListDiv').append(item);
+
+      google.maps.event.addDomListener(title, 'click', myMap.setAllMarkerListItems({
+        dealerName: optObj.dealerName,
+        lat: optObj.lat,
+        lng: optObj.lng,
+      }));
+    };
 
     // Add all markers.
     myMap.addAllMarkers = function(dataArr) {
@@ -70,26 +86,26 @@
       }
 
       myMap.markerCluster = new MarkerClusterer(myMap.map, myMap.markerArr, myMap.markerClusterOptions);
-    }
+    };
 
     // Removes the markers from the map, but keeps them in the array.
     myMap.clearAllMarkers = function() {
       for (var i = 0; i < myMap.markerArr.length; i++) {
         myMap.markerArr[i].setMap(null);
       }
-    }
+    };
 
     // Shows any markers currently in the array.
     myMap.showAllMarkers = function() {
       myMap.setAllMarkers();
-    }
+    };
 
     // Sets the map on all markers in the array.
     myMap.setAllMarkers = function() {
       for (var i = 0; i < myMap.markerArr.length; i++) {
         myMap.markerArr[i].setMap(myMap.map);
       }
-    }
+    };
 
     // Deletes all markers in the array by removing references to them.
     myMap.deleteAllMarkers = function() {
@@ -100,7 +116,7 @@
 
       myMap.clearAllMarkers();
       myMap.markerArr = [];
-    }
+    };
 
     myMap.setInfoWindowContent_v2 = function(infowindow) {
       return function() {
@@ -116,7 +132,27 @@
         );
         myMap.infoWindow.open(this.map, this);
       }
-    }
+    };
+
+    // Add listener to marker list items.
+    myMap.setAllMarkerListItems = function(optObj) {
+      return function(e) {
+        e.cancelBubble = true;
+        e.returnValue = false;
+        if (e.stopPropagation) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+
+        var latLngObj = new google.maps.LatLng(optObj.lat + 0.004, optObj.lng);
+
+        myMap.map.setCenter(latLngObj);
+        myMap.map.setZoom(13);
+        myMap.infoWindow.setContent(optObj.dealerName);
+        myMap.infoWindow.setPosition(latLngObj);
+        myMap.infoWindow.open(myMap.map);
+      };
+    };
 
     myMap.getIcon = function(num) {
       var iconURL = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=';
@@ -127,8 +163,9 @@
       }
 
       return iconURL + iconTxt + '|' + myMap.diffColor(num) + '|000000';
-    }
+    };
 
+    // Get color by sales number.
     myMap.diffColor = function(num) {
       if (num > 0) {
         return '33CC00'; // green
@@ -142,7 +179,7 @@
       else {
         return 'FF0000'; // red
       }
-    }
+    };
 
     $(document).ready(function(){
       $('#myDialogDiv').dialog({
@@ -161,6 +198,9 @@
         open: function (event, ui) {
           // this line helps to prevent showing the incomplete map.
           google.maps.event.trigger(myMap.map, 'resize');
+        },
+        close: function (event, ui) {
+          $('#markerListDiv').html('');
         },
       });
 
@@ -193,6 +233,8 @@
     <input onclick="myMap.showAllMarkers();" type=button value="Show Markers">
     <input onclick="myMap.deleteAllMarkers();" type=button value="Delete Markers">
   </div>
+
+  <div id="markerListDiv"></div>
 
   <div id="myDialogDiv" style="display: none;">
     <div id="myMapDiv" style="width: 700px; height: 400px;"></div> 
