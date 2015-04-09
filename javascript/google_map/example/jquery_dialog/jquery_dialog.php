@@ -135,6 +135,11 @@ count+=10;
       myMap.deleteAllMarkers();
 
       for (var i = 0; i < dataArr.length; i++) {
+        // I initialize the lat and lng to zero for the data points. So, omit it.
+        if (dataArr[i].lat === 0 && dataArr[i].lng === 0) {
+          continue;
+        }
+
         myMap.addMarker({
           lat: dataArr[i].lat,
           lng: dataArr[i].lng,
