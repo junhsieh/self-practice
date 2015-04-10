@@ -65,19 +65,19 @@
       }
 
       if (count > 0) {
-        index = 1; // blue
+        index = 1; // Green
       }
       else if (count > -10) {
-        index = 2; // yellow
+        index = 2; // Yellow
       }
       else if (count > -20) {
-        index = 3; // red
+        index = 3; // Orange
       }
       else if (count > -30) {
-        index = 4; // pink
+        index = 4; // Purple
       }
       else {
-        index = 5; // purple
+        index = 5; // Red
       }
 
       return {
