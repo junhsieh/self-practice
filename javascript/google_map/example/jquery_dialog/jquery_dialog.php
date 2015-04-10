@@ -76,7 +76,7 @@
       else if (count > -30) {
         index = 3;
       }
-      else if (count > -40) {
+      else {
         index = 4;
       }
 
