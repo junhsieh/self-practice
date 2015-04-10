@@ -2,7 +2,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.css" />
   <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <script src="/javascript/google_map/markerclusterer.js"></script>
+  <script src="/javascript/google_map/markerclusterer_compiled.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.js"></script>
   <script>
@@ -43,7 +43,7 @@
 
         for (var i = 0; i < imgSize.length; i++) {
           myMap.markerClusterOptions.styles.push({
-            url: '/javascript/google_map/images/m' + i + '.png',
+            url: '/javascript/google_map/images/m' + (i + 1) + '.png?time=1',
             height: imgSize[i],
             width: imgSize[i],
             //anchor: [26, 0],
@@ -65,22 +65,20 @@
       }
 
       if (count > 0) {
-        index = 0;
+        index = 1; // blue
       }
       else if (count > -10) {
-        index = 1;
+        index = 2; // yellow
       }
       else if (count > -20) {
-        index = 2;
+        index = 3; // red
       }
       else if (count > -30) {
-        index = 3;
+        index = 4; // pink
       }
       else {
-        index = 4;
+        index = 5; // purple
       }
-
-      console.log(count + '_' + index);
 
       return {
         text: count,
