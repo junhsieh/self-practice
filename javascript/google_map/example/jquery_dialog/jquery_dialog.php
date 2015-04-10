@@ -63,7 +63,6 @@
       for (var i = 0; i < markers.length; i++) {
         count += markers[i].salesDiff;
       }
-count+=10;
 
       if (count > 0) {
         index = 0;
