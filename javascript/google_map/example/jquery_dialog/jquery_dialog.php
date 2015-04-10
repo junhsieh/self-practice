@@ -2,7 +2,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.css" />
   <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <script src="/javascript/google_map/markerclusterer_compiled.js"></script>
+  <script src="/javascript/google_map/markerclusterer.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
   <script src="/javascript/jquery-ui/jquery-ui-1.11.4/jquery-ui.min.js"></script>
   <script>
@@ -34,7 +34,7 @@
         // zoom changed listener.
         google.maps.event.addListener(myMap.map, 'zoom_changed', function() {
           var zoomLevel = myMap.map.getZoom();
-          console.log(zoomLevel);
+          //console.log(zoomLevel);
         });
 
         // Setting Cluster Style.
@@ -79,6 +79,8 @@
       else {
         index = 4;
       }
+
+      console.log(count + '_' + index);
 
       return {
         text: count,
@@ -301,6 +303,8 @@
   <p>Some functions in markerclusterer.jsyou may be interested in:</p>
   <ul>
     <li>Cluster.prototype.updateIcon</li>
+    <li>ClusterIcon.prototype.setSums</li>
+    <li>ClusterIcon.prototype.useStyle</li>
     <li>MarkerClusterer.prototype.calculator_</li>
     <li>MarkerClusterer.prototype.setupStyles_</li>
   </ul>
