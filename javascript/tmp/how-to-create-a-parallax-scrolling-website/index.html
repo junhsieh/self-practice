@@ -172,6 +172,28 @@
         </div>
       </section>
       
+      <!--
+      Slide #5 – Cross-fade to blur effect
+
+      Section height – 300% of the viewport, resized on page load
+
+      Finally lets have a look at the last section and congratulations if you’ve made it this far.
+
+      .bcg is the beautiful sharp image of a waterfall in Sapa, Vietnam. On top of it is a blurred image .bcg2(with z-index: 1) which starts fading in when the top of #slide-5 is 33% above the top of the viewport (data--33p-top). It becomes fully visible when the section is 66% out of the view (data--66p-top).
+
+      .bcg3 is the final screen which fades in between 300 and 100 pixels from the bottom of the page and it’s content .hsContent then fades in right at the end.
+
+      Conclusion
+
+      If you want to create a parallax scrolling website that works and looks great, keep these points in mind:
+
+      Less is more – avoid lots of elements flying quickly through the viewport. Subtle movements softened by fading in and out usually look the best.
+      Keep it natural – avoid cars animating vertically, their natural way is horizontal movement. A car coming from the side into the viewport will be less distracting than car falling down from the top.
+      Make it readable – try to avoid text animating over objects with the same color, it will become unreadable.
+      Timing is everything – make sure that your content is perfectly aligned and everything looks the best when the section is centered in the viewport. Having it messy and out of place before and after is part of the beauty of parallax scrolling websites.
+      Have fun – you will create an amazing things when you will enjoy playing with different settings and effect.
+      Keep trying – you might not get it right the first time, just keep trying and things will improve.
+      -->
       <section id="slide-5" class="homeSlide homeSlideTall2">
         <div class="bcg">
           &nbsp;
@@ -179,8 +201,8 @@
         <div class="bcg bcg2" data-bottom-top="opacity: 0;" data--33p-top="opacity: 0;" data--66p-top="opacity: 1;" data-anchor-target="#slide-5">
           <div class="hsContainer">
             <div class="hsContent" data-bottom-top="opacity: 0;" data-center="opacity: 1" data-anchor-target="#slide-5">
-              <h2>Fixed element fading in and out</h2>
-              <p>Showcase your beautiful images before blurring the scene and fading in your headline.</p>
+              <h2>Slide 5 (h2) - Fixed element fading in and out</h2>
+              <p>Slide 5 (p) - Showcase your beautiful images before blurring the scene and fading in your headline.</p>
             </div>
           </div>
         </div>
