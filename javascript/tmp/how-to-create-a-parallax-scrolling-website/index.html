@@ -68,36 +68,73 @@
 		</header>
 
     <main>
+      <!--
+      .hsContainer and .hsContent are two nested containers helping us to center the content vertically on the page. .bcg is a container which takes up 100% width and height of each section and contains our background image.
+
+      Slide #1 – Fade out elements
+
+      Section height – 100% of the viewport, resized on page load
+
+      Background animation
+      The background image of .bcg is animating from the initial position (data-center) 50% 0px to 50% -100px. This means that the background image moves up by 100px between the start of the scrolling and when the bottom of the #slide-1 hits the top of the viewport (data-top-bottom).
+
+      Content fading in and out
+      The content of the slide starts at full opacity as specified in data-center attribute and fades out to opacity: 0 when the #slide-1 h2 hits 106 pixels from the top of the viewport, where 106 is the height of our header.
+      -->
       <section id="slide-1" class="homeSlide">
         <div class="bcg" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -100px;" data-anchor-target="#slide-1">
           <div class="hsContainer">
             <div class="hsContent" data-center="opacity: 1" data-106-top="opacity: 0" data-anchor-target="#slide-1 h2">
-              <h2>Fade out elements before<br />they leave viewport</h2>
-              <p>This slide moves background image at a slower speed then the page scroll. Text is fading out to opacity 0 at 106 pixels from the top.</p>
+              <h2>Slide 1 (h2) - Fade out elements before<br />they leave viewport</h2>
+              <p>Slide 1 (p) - This slide moves background image at a slower speed then the page scroll. Text is fading out to opacity 0 at 106 pixels from the top.</p>
             </div>
           </div>
         </div>
       </section>
       
+      <!--
+      Slide #2 – Background color animation
+
+      Section height – 310px fixed height
+
+      Background animation
+      We are simply animating the background color from dark blue to black. data-0 contains the initial background color and data-top contains the background color to which we are animating when the #slide-2 hits the top of the viewport.
+
+      Content fading in and out
+      The content fades in when #slide-2 h2 is 206 pixels from the bottom of the viewport and fades out similar way as the #slide-1 content.
+      -->
       <section id="slide-2">
         <div class="bcg" data-0="background-color:rgb(1,27,59);" data-top="background-color:(0,0,0);"  data-anchor-target="#slide-2">
           <div class="hsContainer">
             <div class="hsContent">
-              <h2 data-center="opacity: 1" data--200-bottom="opacity: 0" data-206-top="opacity: 1" data-106-top="opacity: 0" data-anchor-target="#slide-2 h2">Fade me in and out</h2>
-              <p data-center="opacity: 1" data--200-bottom="opacity: 0" data-206-top="opacity: 1" data-106-top="opacity: 0" data-anchor-target="#slide-2 h2">Here we are changing the background color from blue to black. Text is fading in at 206 pixels from the bottom and fading out 106 pixels from the top.</p>
+              <h2 data-center="opacity: 1" data--200-bottom="opacity: 0" data-206-top="opacity: 1" data-106-top="opacity: 0" data-anchor-target="#slide-2 h2">Slide 2 (h2) - Fade me in and out</h2>
+              <p data-center="opacity: 1" data--200-bottom="opacity: 0" data-206-top="opacity: 1" data-106-top="opacity: 0" data-anchor-target="#slide-2 h2">Slide 2 (p) - Here we are changing the background color from blue to black. Text is fading in at 206 pixels from the bottom and fading out 106 pixels from the top.</p>
             </div>
           </div>
         </div>
       </section>
 
+      <!--
+      Slide #3 – Move background image horizontally
+
+      Section height – 100% of the viewport, resized on page load
+
+      Background animation
+      The background image on this slide is only slightly moving up until the slide is centered in the viewport. Then it’s moving 40 pixels left as specified in the ending position data-top-bottom="background-position: -40px 50%;".
+
+      Fixed content
+      The content is this time fixed to 206px from the top of the slide and doesn’t move. It fades in when the #slide-3 is 106 pixel from the top of the viewport and stays at full opacity until the slide is 30% above the top of the viewport. Then it fades out when 60% of the slide is out of the view.
+
+      Note: Using the percentage instead of pixels is very handy especially if you don’t know how tall your sections will be – e.g. if you are using javascript to keep sections 100% height of your viewport on window resize.
+      -->
       <section id="slide-3" class="homeSlide">
         <div class="bcg" data-center="background-position: 0px 50%;" data-bottom-top="background-position: 0px 40%;" data-top-bottom="background-position: -40px 50%;" data-anchor-target="#slide-3">
           <div class="hsContainer">
             <div class="hsContent">
               <div class="plaxEl" data-106-top="opacity: 0" data--30p-top="opacity: 1;" data--60p-top="opacity: 0;" data-bottom="opacity: 1; position: fixed; top: 206px; width: 100%; left: 0;"  data-anchor-target="#slide-3">
-                <h2>Fixed element fading in and out</h2>
-                <p><span class="bgBlack">Text is fixed 206 pixels from the top, while the background is moving 40 pixels to the left.</span></p>
-                <p><span class="bgBlack">Or did you think that the scooter is driving off?</span></p>
+                <h2>Slide 3 (h2) - Fixed element fading in and out</h2>
+                <p><span class="bgBlack">Slide 3 (p) - Text is fixed 206 pixels from the top, while the background is moving 40 pixels to the left.</span></p>
+                <p><span class="bgBlack">Slide 3 (p) - Or did you think that the scooter is driving off?</span></p>
               </div>
             </div>
           </div>
