@@ -30,12 +30,6 @@ ul.myul li {
 
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <!--
-    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/shortcuts/sticky-elements/waypoints-sticky.min.js"></script>
-    -->
-
     <script src="/javascript/tmp/waypoints/jquery.waypoints.js"></script>
     <script src="/javascript/tmp/waypoints/shortcuts/sticky.js"></script>
     <script src="/javascript/tmp/waypoints/shortcuts/inview.js"></script>
@@ -50,12 +44,25 @@ $(document).ready(function(){
     new Waypoint({
       element: $(this).get(0),
       handler: function(direction) {
-        //console.log(this.element.id + ' hit ' + direction);
-        $('.mybutton').removeClass('active');
-        getRelatedNavigation(this.element.id).addClass('active');
+        if (direction == 'down') {
+          $('.mybutton').removeClass('active');
+          getRelatedNavigation(this.element.id).addClass('active');
+        }
       },
       offset: function() {
-        //console.log(this.element.clientHeight);
+        return (window.innerHeight / 2) + (this.element.clientHeight / 4);
+      },
+    });
+
+    new Waypoint({
+      element: $(this).get(0),
+      handler: function(direction) {
+        if (direction == 'up') {
+          $('.mybutton').removeClass('active');
+          getRelatedNavigation(this.element.id).addClass('active');
+        }
+      },
+      offset: function() {
         return (window.innerHeight / 2) - (this.element.clientHeight / 2);
       },
     });
@@ -77,9 +84,14 @@ $(document).ready(function(){
   // ======================================
   // Smooth scroll to content
   // ======================================
-  $('nav a').on('click',function(e){
-    e.preventDefault();
-    $('html,body').animate({scrollTop:getRelatedContent(this).offset().top - 20})
+  $('nav a').on('click',function(event){
+    event.preventDefault();
+
+    var divMiddle = (window.innerHeight / 2) - (getRelatedContent(this).height() / 2);
+    $('html,body').animate({scrollTop: getRelatedContent(this).offset().top - divMiddle});
+
+    //$('.mybutton').removeClass('active');
+    //$(this).addClass('active');
   });
 
   // ======================================
