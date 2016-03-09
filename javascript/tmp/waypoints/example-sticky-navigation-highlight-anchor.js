@@ -1,6 +1,6 @@
 $(document).ready(function(){
   new Waypoint.Sticky({
-    element: $('#basic-sticky-example')[0],
+    element: $('#sticky-nav')[0],
     stuckClass: 'stuck',
   });
 
@@ -36,7 +36,6 @@ $(document).ready(function(){
     });
   });
 
-
   // ======================================
   // Helper functions
   // ======================================
@@ -47,13 +46,13 @@ $(document).ready(function(){
 
   // Get link by section or article id
   function getRelatedNavigation(_id){
-    return $('nav a[href=#' + _id + ']');
+    return $('#sticky-nav a[href=#' + _id + ']');
   }
 
   // ======================================
   // Smooth scroll to content
   // ======================================
-  $('nav a').on('click',function(event){
+  $('#sticky-nav a').on('click',function(event){
     event.preventDefault();
 
     var _screenHeightMiddle = (window.innerHeight / 2) - (getRelatedContent(this).height() / 2);
