@@ -15,18 +15,18 @@
 
     <nav role="navigation" id="sticky-nav">
       <ul class="sticky-nav-ul">
-        <li><a href="#A1" class="sticky-nav-a">Article A1</a></li>
-        <li><a href="#A2" class="sticky-nav-a">Aritcle A2</a></li>
-        <li><a href="#A3" class="sticky-nav-a">Aritcle A3</a></li>
-        <li><a href="#A4" class="sticky-nav-a">Aritcle A4</a></li>
+        <li><a href="#section1" class="sticky-nav-a">Section A1</a></li>
+        <li><a href="#section2" class="sticky-nav-a">Section A2</a></li>
+        <li><a href="#section3" class="sticky-nav-a">Section A3</a></li>
+        <li><a href="#section4" class="sticky-nav-a">Section A4</a></li>
       </ul>
     </nav>
 
     <main>
-      <section id="A1" class="main-section">1</section>
-      <section id="A2" class="main-section">2</section>
-      <section id="A3" class="main-section">3</section>
-      <section id="A4" class="main-section">4</section>
+      <section id="section1" class="main-section">1</section>
+      <section id="section2" class="main-section">2</section>
+      <section id="section3" class="main-section">3</section>
+      <section id="section4" class="main-section">4</section>
     </main>
 
     <footer>
