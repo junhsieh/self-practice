@@ -4,7 +4,6 @@ $(document).ready(function(){
   var count = images.length;
   var transitions = 1;
   var callCountS1 = 0;
-  var callCountS2 = 0;
   var currenctSection = 'section1';
     
   TweenMax.set(images, {autoAlpha:0});
@@ -75,9 +74,6 @@ $(document).ready(function(){
     if (_scrollTop >= 100 && _scrollTop < 200) {
       if (callCountS1 == 0) {
         ++callCountS1;
-
-        currenctSection = 'section1';
-
         setTimeout(fadeImage, 1000);
       }
     }
@@ -97,7 +93,7 @@ $(document).ready(function(){
         }
       },
       offset: function() {
-        // returning the bottom of the div when it is in the middle of the screen.
+        // returning the bottom of the div when the div in the middle of the screen.
         return (window.innerHeight / 2) + (this.element.clientHeight / 2);
       },
     });
@@ -112,7 +108,7 @@ $(document).ready(function(){
         }
       },
       offset: function() {
-        // returning the top of the div when it is in the middle of the screen.
+        // returning the top of the div when the div in the middle of the screen.
         return (window.innerHeight / 2) - (this.element.clientHeight / 2);
       },
     });
