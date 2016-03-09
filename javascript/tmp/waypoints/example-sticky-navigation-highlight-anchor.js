@@ -3,7 +3,9 @@ $(document).ready(function(){
   var images = $('#section1 img');
   var count = images.length;
   var transitions = 1;
-  var callCount = 0;
+  var callCountS1 = 0;
+  var callCountS2 = 0;
+  var currenctSection = 'section1';
     
   TweenMax.set(images, {autoAlpha:0});
   TweenMax.set($(".active"), {autoAlpha:1});
@@ -17,8 +19,6 @@ $(document).ready(function(){
     TweenMax.set(next, {autoAlpha:1, className:'+=active', onComplete:nextImage});
     
     transitions++;
-    
-    console.log(transitions);
   }
 
   function nextImage()
@@ -70,10 +70,28 @@ $(document).ready(function(){
   });
 
   $(window).on('scroll', function (event) {
-    if ($(this).scrollTop() > 0) {
-      if (callCount == 0) {
-        ++callCount;
-        setTimeout(fadeImage, 100);
+    var _scrollTop = $(this).scrollTop();
+
+    if (_scrollTop >= 100 && _scrollTop < 200) {
+      if (callCountS1 == 0) {
+        ++callCountS1;
+
+        currenctSection = 'section1';
+
+        setTimeout(fadeImage, 1000);
+      }
+    }
+    else if (_scrollTop >= 600 && _scrollTop < 700) {
+      if (callCountS2 == 0) {
+        ++callCountS2;
+
+        currenctSection = 'section2';
+        images = $('#section2 img');
+        count = images.length;
+        TweenMax.set(images, {autoAlpha:0});
+        TweenMax.set($(".active"), {autoAlpha:1});
+
+        setTimeout(fadeImage, 1000);
       }
     }
   });
