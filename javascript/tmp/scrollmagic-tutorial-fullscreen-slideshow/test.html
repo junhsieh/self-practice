@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      /* Sass color variables */
+       
+      /* Make the body 100% of the browser viewport height */
+      html, body {
+          height: 100%;
+          margin: 0;
+      }
+      h1 {
+          padding: 20% 0 0 0;
+          margin: 0;
+          text-align: center;
+          font-size: 20px;
+      }
+      p {
+          text-align: center;
+          color: transparentize($white, 0.5);
+      }
+      strong {
+          color: #fff;
+      }
+       
+      /* Make each section 100% of the browser viewport height */
+      section {
+          height: 100%;
+          color: white;
+          position: relative;
+          text-align: center;
+       
+          /* Center the content of the sections */
+          .inner {
+              margin: 0 auto;
+              max-width: 85%;
+          }
+      }
+       
+      /* Background colors for each section */
+      section#one { background-color: #0089cd; }
+      section#two { background-color: yellow; }
+      section#three { background-color: red; }
+      section#four { background-color:  green; }
+    </style>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascript/tmp/building-interactive-scrolling-websites-with-scrollmagic-js/js/lib/greensock/TweenMax.min.js"></script>
+  </head>
+  <body>
+    <section id="one">
+      <div class="inner">
+        <h1>one - Slide Title</h1>
+        <p>one - Slide description text goes here.</p>
+      </div>
+    </section>
+
+    <section id="two">
+      <div class="inner">
+        <h1>two - Slide Title</h1>
+        <p>two - Slide description text goes here.</p>
+      </div>
+    </section>
+
+    <section id="three">
+      <div class="inner">
+        <h1>three - Slide Title</h1>
+        <p>three - Slide description text goes here.</p>
+      </div>
+    </section>
+
+    <section id="four">
+      <div class="inner">
+        <h1>four - Slide Title</h1>
+        <p>four - Slide description text goes here.</p>
+      </div>
+    </section>
+
+    <script src="/javascript/tmp/building-interactive-scrolling-websites-with-scrollmagic-js/scrollmagic/uncompressed/ScrollMagic.js"></script>
+    <script src="/javascript/tmp/building-interactive-scrolling-websites-with-scrollmagic-js/scrollmagic/uncompressed/plugins/debug.addIndicators.js"></script>
+    <script src="/javascript/tmp/building-interactive-scrolling-websites-with-scrollmagic-js/scrollmagic/uncompressed/plugins/animation.gsap.js"></script>
+    <script src="/javascript/tmp/building-interactive-scrolling-websites-with-scrollmagic-js/test.js"></script>
+  </body>
+</html>
