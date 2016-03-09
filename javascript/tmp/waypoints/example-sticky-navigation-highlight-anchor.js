@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   function fadeImage()
   {
-    var active = $(".active");
+    var active = $('#' + currenctSection + " .active");
     var next = active.next();
     
     TweenMax.set(active, {autoAlpha:0, className:"-=active"});
@@ -77,19 +77,6 @@ $(document).ready(function(){
         ++callCountS1;
 
         currenctSection = 'section1';
-
-        setTimeout(fadeImage, 1000);
-      }
-    }
-    else if (_scrollTop >= 600 && _scrollTop < 700) {
-      if (callCountS2 == 0) {
-        ++callCountS2;
-
-        currenctSection = 'section2';
-        images = $('#section2 img');
-        count = images.length;
-        TweenMax.set(images, {autoAlpha:0});
-        TweenMax.set($(".active"), {autoAlpha:1});
 
         setTimeout(fadeImage, 1000);
       }

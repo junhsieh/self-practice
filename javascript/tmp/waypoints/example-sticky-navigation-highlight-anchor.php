@@ -48,18 +48,16 @@
             <img src="/javascript/tmp/waypoints/images/out000020.png" width="13%">
             <img src="/javascript/tmp/waypoints/images/out000021.png" width="13%">
             <img src="/javascript/tmp/waypoints/images/out000022.png" width="13%">
-          </div>
-        </div>
-      </section>
-      <section id="section2" class="main-section">
-        <div style="">
-          <div style="width: 300px; height: 300px; margin: 100px auto; background: pink;">
+
+            <!--
             <img src="/javascript/tmp/waypoints/images/WE.png" class="active">
             <img src="/javascript/tmp/waypoints/images/WL.png">
             <img src="/javascript/tmp/waypoints/images/WX.png">
+            -->
           </div>
         </div>
       </section>
+      <section id="section2" class="main-section">2</section>
       <section id="section3" class="main-section">3</section>
       <section id="section4" class="main-section">4</section>
     </main>
