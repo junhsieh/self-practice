@@ -1,39 +1,4 @@
 $(document).ready(function(){
-  new Waypoint.Sticky({
-    element: $('#sticky-nav')[0],
-    stuckClass: 'sticky-nav-stuck',
-  });
-
-  $('.main-section').each(function(){
-    new Waypoint({
-      element: $(this).get(0),
-      handler: function(direction) {
-        if (direction == 'down') {
-          $('.sticky-nav-a').removeClass('sticky-nav-a-active');
-          getRelatedNavigation(this.element.id).addClass('sticky-nav-a-active');
-        }
-      },
-      offset: function() {
-        // returning the bottom of the div when it is in the middle of the screen.
-        return (window.innerHeight / 2) + (this.element.clientHeight / 2);
-      },
-    });
-
-    new Waypoint({
-      element: $(this).get(0),
-      handler: function(direction) {
-        if (direction == 'up') {
-          $('.sticky-nav-a').removeClass('sticky-nav-a-active');
-          getRelatedNavigation(this.element.id).addClass('sticky-nav-a-active');
-        }
-      },
-      offset: function() {
-        // returning the top of the div when it is in the middle of the screen.
-        return (window.innerHeight / 2) - (this.element.clientHeight / 2);
-      },
-    });
-  });
-
   // ======================================
   // Helper functions
   // ======================================
@@ -57,6 +22,49 @@ $(document).ready(function(){
 
     $('html,body').animate({
       scrollTop: getRelatedContent(this).offset().top - _screenHeightMiddle,
+    });
+  });
+
+  // ======================================
+  // Sticky Navigation
+  // ======================================
+  new Waypoint.Sticky({
+    element: $('#sticky-nav')[0],
+    stuckClass: 'sticky-nav-stuck',
+  });
+
+  // ======================================
+  // Creating Waypoint
+  // ======================================
+  $('.main-section').each(function(){
+    // set a Waypoint when scrolling down.
+    new Waypoint({
+      element: $(this).get(0),
+      handler: function(direction) {
+        if (direction == 'down') {
+          $('.sticky-nav-a').removeClass('sticky-nav-a-active');
+          getRelatedNavigation(this.element.id).addClass('sticky-nav-a-active');
+        }
+      },
+      offset: function() {
+        // returning the bottom of the div when it is in the middle of the screen.
+        return (window.innerHeight / 2) + (this.element.clientHeight / 2);
+      },
+    });
+
+    // set a Waypoint when scrolling up.
+    new Waypoint({
+      element: $(this).get(0),
+      handler: function(direction) {
+        if (direction == 'up') {
+          $('.sticky-nav-a').removeClass('sticky-nav-a-active');
+          getRelatedNavigation(this.element.id).addClass('sticky-nav-a-active');
+        }
+      },
+      offset: function() {
+        // returning the top of the div when it is in the middle of the screen.
+        return (window.innerHeight / 2) - (this.element.clientHeight / 2);
+      },
     });
   });
 });

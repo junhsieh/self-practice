@@ -4,7 +4,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="/javascript/tmp/waypoints/jquery.waypoints.js"></script>
     <script src="/javascript/tmp/waypoints/shortcuts/sticky.js"></script>
-    <script src="/javascript/tmp/waypoints/shortcuts/inview.js"></script>
     <script src="/javascript/tmp/waypoints/example-sticky-navigation-highlight-anchor.js"></script>
   </head>
   <body>
