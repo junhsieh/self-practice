@@ -34,7 +34,7 @@
   new ScrollMagic.Scene({
     offset: wh*3,
   })
-  .setClassToggle("section#four", "is-active add-another-class")
+  .setClassToggle("section#four", "is-active")
   .addTo(ctrl);
  
 })(jQuery);
