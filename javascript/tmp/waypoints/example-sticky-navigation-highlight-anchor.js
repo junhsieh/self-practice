@@ -1,17 +1,16 @@
 $(document).ready(function(){
   new Waypoint.Sticky({
     element: $('#sticky-nav')[0],
-    stuckClass: 'stuck',
+    stuckClass: 'sticky-nav-stuck',
   });
 
-  $('.mysection').each(function(){
+  $('.main-section').each(function(){
     new Waypoint({
       element: $(this).get(0),
       handler: function(direction) {
         if (direction == 'down') {
-          console.log('hit down');
-          $('.mybutton').removeClass('active');
-          getRelatedNavigation(this.element.id).addClass('active');
+          $('.sticky-nav-a').removeClass('sticky-nav-a-active');
+          getRelatedNavigation(this.element.id).addClass('sticky-nav-a-active');
         }
       },
       offset: function() {
@@ -24,9 +23,8 @@ $(document).ready(function(){
       element: $(this).get(0),
       handler: function(direction) {
         if (direction == 'up') {
-          console.log('hit up');
-          $('.mybutton').removeClass('active');
-          getRelatedNavigation(this.element.id).addClass('active');
+          $('.sticky-nav-a').removeClass('sticky-nav-a-active');
+          getRelatedNavigation(this.element.id).addClass('sticky-nav-a-active');
         }
       },
       offset: function() {
@@ -39,12 +37,12 @@ $(document).ready(function(){
   // ======================================
   // Helper functions
   // ======================================
-  // Get section or article by href
+  // Get section by href
   function getRelatedContent(_element){
     return $($(_element).attr('href'));
   }
 
-  // Get link by section or article id
+  // Get link by section id
   function getRelatedNavigation(_id){
     return $('#sticky-nav a[href=#' + _id + ']');
   }
