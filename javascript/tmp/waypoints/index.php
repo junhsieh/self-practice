@@ -30,19 +30,37 @@ ul.myul li {
 
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/shortcuts/sticky-elements/waypoints-sticky.min.js"></script>
 
     <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/shortcuts/sticky-elements/waypoints-sticky.min.js"></script>
+    -->
+
     <script src="/javascript/tmp/waypoints/jquery.waypoints.js"></script>
     <script src="/javascript/tmp/waypoints/shortcuts/sticky.js"></script>
     <script src="/javascript/tmp/waypoints/shortcuts/inview.js"></script>
-    -->
     <script>
 $(document).ready(function(){
-  $('#basic-sticky-example').waypoint('sticky', {
+  new Waypoint.Sticky({
+    element: $('#basic-sticky-example')[0],
     stuckClass: 'stuck',
   });
+
+  $('.mysection').each(function(){
+    new Waypoint({
+      element: $(this).get(0),
+      handler: function(direction) {
+        //console.log(this.element.id + ' hit ' + direction);
+        $('.mybutton').removeClass('active');
+        getRelatedNavigation(this.element.id).addClass('active');
+      },
+      offset: function() {
+        //console.log(this.element.clientHeight);
+        return (window.innerHeight / 2) - (this.element.clientHeight / 2);
+      },
+    });
+  });
+
 
   // ======================================
   // Helper functions
@@ -52,8 +70,8 @@ $(document).ready(function(){
     return $($(el).attr('href'));
   }
   // Get link by section or article id
-  function getRelatedNavigation(el){
-    return $('nav a[href=#'+$(el).attr('id')+']');
+  function getRelatedNavigation(_id){
+    return $('nav a[href=#' + _id + ']');
   }
 
   // ======================================
@@ -78,29 +96,29 @@ $(document).ready(function(){
     triggerOnce: false
   };
 
-  $('.mysection')
-     .waypoint(function(direction) {
-        console.log(direction);
-        $('.mybutton').removeClass('active');
-       // Highlight element when related content
-       // is 10% percent from the bottom... 
-       // remove if below
-       //getRelatedNavigation(this).toggleClass('active', direction === 'down');
-       getRelatedNavigation(this).toggleClass('active');
-     }, {
-       offset: 'bottom-in-view' // 
-       //offset: '90%' // 
-     })
-     //.waypoint(function(direction) {
-     //   console.log(direction);
-     //  // Highlight element when bottom of related content
-     //  // is 100px from the top - remove if less
-     //  // TODO - make function for this
-     //  getRelatedNavigation(this).toggleClass('active', direction === 'up');
-     //}, {
-     //  //offset: function() {  return -$(this).height() + 100; }
-     //  offset: '50%' // 
-     //});
+  //$('.mysection')
+  //   .waypoint(function(direction) {
+  //      console.log(direction);
+  //      $('.mybutton').removeClass('active');
+  //     // Highlight element when related content
+  //     // is 10% percent from the bottom... 
+  //     // remove if below
+  //     //getRelatedNavigation(this).toggleClass('active', direction === 'down');
+  //     getRelatedNavigation(this).toggleClass('active');
+  //   }, {
+  //     offset: 'bottom-in-view' // 
+  //     //offset: '90%' // 
+  //   })
+  //   //.waypoint(function(direction) {
+  //   //   console.log(direction);
+  //   //  // Highlight element when bottom of related content
+  //   //  // is 100px from the top - remove if less
+  //   //  // TODO - make function for this
+  //   //  getRelatedNavigation(this).toggleClass('active', direction === 'up');
+  //   //}, {
+  //   //  //offset: function() {  return -$(this).height() + 100; }
+  //   //  offset: '50%' // 
+  //   //});
 });
     </script>
   </head>
