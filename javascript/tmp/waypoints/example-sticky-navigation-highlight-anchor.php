@@ -2,6 +2,7 @@
   <head>
     <link rel="stylesheet" href="/javascript/tmp/waypoints/example-sticky-navigation-highlight-anchor.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.9.3/TweenMax.min.js"></script>
     <script src="/javascript/tmp/waypoints/jquery.waypoints.js"></script>
     <script src="/javascript/tmp/waypoints/shortcuts/sticky.js"></script>
     <script src="/javascript/tmp/waypoints/example-sticky-navigation-highlight-anchor.js"></script>
@@ -22,7 +23,14 @@
     </nav>
 
     <main>
-      <section id="section1" class="main-section">1</section>
+      <section id="section1" class="main-section">
+        <div>
+          <img class="active" src="http://www.snorkl.tv/dev/loaderMax/images/crab.png" width="320" height="200"/>
+          <img src="http://www.snorkl.tv/dev/loaderMax/images/bird.png" width="320" height="200"/>
+          <img src="http://www.snorkl.tv/dev/loaderMax/images/whale.png" width="320" height="200"/>
+          <img src="http://www.snorkl.tv/dev/loaderMax/images/lobster.png" width="320" height="200"/>
+        </div>
+      </section>
       <section id="section2" class="main-section">2</section>
       <section id="section3" class="main-section">3</section>
       <section id="section4" class="main-section">4</section>
