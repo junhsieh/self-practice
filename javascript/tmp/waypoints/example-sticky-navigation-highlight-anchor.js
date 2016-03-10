@@ -53,8 +53,8 @@ $(document).ready(function(){
         }
       },
       offset: function() {
-        // returning the bottom of the div when the div in the middle of the screen.
-        return (window.innerHeight / 2) + (this.element.clientHeight / 2);
+        // when the div hits 3 / 4 of its middle position.
+        return (window.innerHeight / 2) - (this.element.clientHeight / 4);
       },
     });
 
@@ -68,8 +68,8 @@ $(document).ready(function(){
         }
       },
       offset: function() {
-        // returning the top of the div when the div in the middle of the screen.
-        return (window.innerHeight / 2) - (this.element.clientHeight / 2);
+        // when the div hits 1 / 4 above its middle position.
+        return (window.innerHeight / 2) - (this.element.clientHeight / 4) * 3;
       },
     });
   });
