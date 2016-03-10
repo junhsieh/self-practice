@@ -20,8 +20,15 @@ $(document).ready(function(){
 
     var _screenHeightMiddle = (window.innerHeight / 2) - (getRelatedContent(this).height() / 2);
 
-    $('html,body').animate({
+    // animate would fire thw callback twice because it calls its callback once for each element in the set you call animate on.
+    // because the animation works on body on some browsers but on html on other browsers.
+    $('html, body').animate({
       scrollTop: getRelatedContent(this).offset().top - _screenHeightMiddle,
+    }, 400, function(){
+      // do nothing
+    })
+    .promise().then(function() {
+      // Called when the animation in total is complete
     });
   });
 
