@@ -25,18 +25,18 @@ $(document).ready(function(){
     });
   });
 
+  $(window).on('scroll', function (event) {
+    var _scrollTop = $(this).scrollTop();
+
+    console.log(_scrollTop);
+  });
+
   // ======================================
   // Sticky Navigation
   // ======================================
   new Waypoint.Sticky({
     element: $('#sticky-nav')[0],
     stuckClass: 'sticky-nav-stuck',
-  });
-
-  $(window).on('scroll', function (event) {
-    var _scrollTop = $(this).scrollTop();
-
-    console.log(_scrollTop);
   });
 
   // ======================================
