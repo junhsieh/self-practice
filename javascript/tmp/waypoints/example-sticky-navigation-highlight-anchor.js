@@ -1,39 +1,4 @@
 $(document).ready(function(){
-
-  var images = $('#section1 img');
-  var count = images.length;
-  var transitions = 1;
-  var callCountS1 = 0;
-  var currenctSection = 'section1';
-    
-  TweenMax.set(images, {autoAlpha:0});
-  TweenMax.set($(".active"), {autoAlpha:1});
-
-  function fadeImage()
-  {
-    var active = $('#' + currenctSection + " .active");
-    var next = active.next();
-    
-    TweenMax.set(active, {autoAlpha:0, className:"-=active"});
-    TweenMax.set(next, {autoAlpha:1, className:'+=active', onComplete:nextImage});
-    
-    transitions++;
-  }
-
-  function nextImage()
-  {
-    if(transitions < count)
-    {
-      setTimeout(fadeImage, 1000);
-    }
-    else
-    {
-      transitions = 0;
-      TweenMax.set(images[0], {autoAlpha:1, className:'+=active'});
-      //setTimeout(fadeImage,2000);
-    }
-  }
-
   // ======================================
   // Helper functions
   // ======================================

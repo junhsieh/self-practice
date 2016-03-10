@@ -23,40 +23,7 @@
     </nav>
 
     <main>
-      <section id="section1" class="main-section">
-        <div style="">
-          <div style="width: 300px; height: 300px; margin: 100px auto; background: pink;">
-            <img src="/javascript/tmp/waypoints/images/out000001.png" width="13%" class="active">
-            <img src="/javascript/tmp/waypoints/images/out000002.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000003.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000004.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000005.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000006.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000007.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000008.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000009.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000010.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000011.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000012.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000013.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000014.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000015.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000016.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000017.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000018.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000019.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000020.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000021.png" width="13%">
-            <img src="/javascript/tmp/waypoints/images/out000022.png" width="13%">
-
-            <!--
-            <img src="/javascript/tmp/waypoints/images/WE.png" class="active">
-            <img src="/javascript/tmp/waypoints/images/WL.png">
-            <img src="/javascript/tmp/waypoints/images/WX.png">
-            -->
-          </div>
-        </div>
-      </section>
+      <section id="section1" class="main-section">1</section>
       <section id="section2" class="main-section">2</section>
       <section id="section3" class="main-section">3</section>
       <section id="section4" class="main-section">4</section>
