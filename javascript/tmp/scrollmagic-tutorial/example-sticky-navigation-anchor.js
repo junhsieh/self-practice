@@ -5,6 +5,7 @@ $(document).on("click", "a[href^=#]", function(e) {
     globalSceneOptions: {
       duration: $('section').height(),
       triggerHook: .025,
+      //offset: 200,
       reverse: true
     }
   });
