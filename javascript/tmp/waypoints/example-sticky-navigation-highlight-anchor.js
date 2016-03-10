@@ -36,12 +36,7 @@ $(document).ready(function(){
   $(window).on('scroll', function (event) {
     var _scrollTop = $(this).scrollTop();
 
-    if (_scrollTop >= 100 && _scrollTop < 200) {
-      if (callCountS1 == 0) {
-        ++callCountS1;
-        setTimeout(fadeImage, 1000);
-      }
-    }
+    console.log(_scrollTop);
   });
 
   // ======================================
