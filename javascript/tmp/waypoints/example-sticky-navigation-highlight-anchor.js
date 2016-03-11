@@ -20,7 +20,7 @@ $(document).ready(function(){
 
     var _screenHeightMiddle = (window.innerHeight / 2) - (getRelatedContent(this).height() / 2);
 
-    // animate would fire thw callback twice because it calls its callback once for each element in the set you call animate on.
+    // animate would fire the callback twice because it calls its callback once for each element in the set you call animate on.
     // because the animation works on body on some browsers but on html on other browsers.
     $('html, body').animate({
       scrollTop: getRelatedContent(this).offset().top - _screenHeightMiddle,
